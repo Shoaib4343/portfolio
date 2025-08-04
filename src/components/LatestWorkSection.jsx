@@ -3,17 +3,17 @@ import { ArrowUpRight } from "lucide-react";
 const works = [
   {
     title: "UI/ UX Design",
-    img: "/work1.png", // replace with your actual images
+    img: "/Rectangle 129.png", // replace with your actual images
     bg: "bg-[#FFF6F1]",
   },
   {
     title: "Web Design",
-    img: "/work2.png",
+    img: "/Rectangle 130.png",
     bg: "bg-white",
   },
   {
     title: "Landing Page",
-    img: "/work3.png",
+    img: "/landing page.png",
     bg: "bg-[#FFF6F1]",
   },
 ];
@@ -35,27 +35,48 @@ export default function LatestWorkSection() {
       </div>
 
       {/* Cards */}
-      <div className="flex justify-center gap-8 relative z-10">
-        {works.map((work, idx) => (
-          <div
-            key={work.title}
-            className={`rounded-t-2xl rounded-b-xl shadow-xl w-[330px] ${work.bg} pb-6 flex flex-col items-center relative`}
-          >
-            {/* Card Header */}
-            <div className="bg-orange-400 w-full rounded-t-2xl px-6 py-4 text-white text-lg font-medium text-left">
-              {work.title}
+      <div className="flex justify-center gap-8 flex-wrap relative z-10">
+        {works.map((work) => (
+          <div key={work.title} className="relative w-[320px] flex flex-col items-center">
+            {/* Main Card */}
+            <div className="relative bg-orange-400 rounded-3xl shadow-xl w-full overflow-visible z-10 flex flex-col">
+              {/* Header */}
+              <div className="pt-8 px-8 pb-8">
+                <h3 className="text-white text-2xl font-semibold">{work.title}</h3>
+                <span className="block w-full h-[1px] mt-4 bg-orange-200/60 rounded-full" />
+              </div>
+
+              {/* Folder shadow effect on top only */}
+              <div className="relative w-full">
+                {/* Folder Layer 1 (Bottom Layer) */}
+                <div className="absolute -top-6 left-10 right-10 h-10 bg-[#E0E7FF] rounded-t-2xl z-0 shadow-md" />
+                {/* Folder Layer 2 (Middle Layer) */}
+                <div className="absolute -top-3 left-5 right-5 h-10 bg-[#CBD5E1] rounded-t-2xl z-10 shadow" />
+              </div>
+
+              {/* Image at Bottom (flush left, right, bottom) */}
+              <div className="relative z-20 mt-auto ">
+                <img
+                  src={work.img}
+                  alt={work.title}
+                  className="w-full h-54 object-none  rounded-3xl object-top"
+                />
+              </div>
+
+              {/* Arrow Button */}
+              <div className="mt-6 flex justify-end pr-6 pb-6 absolute top-70  right-0 z-100">
+                <button className="w-14 h-14 rounded-full bg-[#232B3B] flex items-center justify-center shadow-lg hover:scale-105 transition-transform border-4 border-white">
+                  <ArrowUpRight className="text-white w-7 h-7" />
+                </button>
+              </div>
             </div>
-            {/* Card Content */}
-            <div className="bg-white w-[90%] mx-auto rounded-xl shadow-md -mt-8 p-4 flex flex-col items-center">
-              <img src={work.img} alt={work.title} className="w-full h-40 object-cover rounded-lg" />
-            </div>
-            {/* Arrow Button */}
-            <button className="absolute -bottom-7 right-7 w-14 h-14 rounded-full bg-[#232B3B] flex items-center justify-center shadow-lg hover:scale-105 transition-all border-4 border-white">
-              <ArrowUpRight className="text-white w-7 h-7" />
-            </button>
           </div>
         ))}
       </div>
+
+
+
+
 
       {/* Slider Dots */}
       <div className="flex justify-center mt-16 gap-3">
